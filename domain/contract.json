@@ -5,9 +5,11 @@
     "delegation",
     "trace_fragment",
     "chain_head",
+    "supplement_segment",
     "fork_case",
     "projection",
-    "read_audit"
+    "read_audit",
+    "export_record"
   ],
   "states": [
     "open",
@@ -20,14 +22,20 @@
     "released"
   ],
   "event_types": [
+    "family.created",
     "delegation.created",
     "fragment.accepted",
     "fragment.duplicated",
     "gap.detected",
     "fork.opened",
+    "fork.candidate_added",
+    "fork.adjudication_started",
     "fork.resolved",
     "chain.sealed",
-    "family.frozen"
+    "family.frozen",
+    "family.released",
+    "read.audited",
+    "export.created"
   ],
   "time_policy": "ISO 8601 with timezone",
   "identifier_policy": "同一租户和对象类型内业务标识唯一",

@@ -1,0 +1,44 @@
+{
+  "version": "projection-policy-1.0",
+  "description": "按角色对凭据、个人数据与跨租户内容生成投影；所有投影必须保留同一原始证据摘要。",
+  "field_classifiers": {
+    "credential": ["password", "passwd", "secret", "token", "api_key", "apikey", "authorization", "private_key", "credential"],
+    "pii": ["email", "phone", "mobile", "id_card", "identity_no", "real_name", "passport", "address"],
+    "cross_tenant": ["tenant_id", "owner_tenant"]
+  },
+  "content_markers": {
+    "credential": ["-----BEGIN", "Bearer ", "AKIA"],
+    "pii": ["@"]
+  },
+  "roles": {
+    "investigator": {
+      "description": "内部调查员：个人数据以掩码形态可见（如 v***@example.com），凭据永不返回。",
+      "allow_classified": [],
+      "mask_classified": ["pii"],
+      "redact_classified": ["credential"],
+      "drop_cross_tenant": true
+    },
+    "auditor": {
+      "description": "审计员：结构与长度可见，所有敏感值以类型标记替代，可验证摘要。",
+      "allow_classified": [],
+      "mask_classified": [],
+      "redact_classified": ["credential", "pii"],
+      "drop_cross_tenant": true
+    },
+    "admin": {
+      "description": "租户管理员：本租户内可见明文，跨租户字段被剔除。",
+      "allow_classified": ["credential", "pii"],
+      "mask_classified": [],
+      "redact_classified": [],
+      "drop_cross_tenant": true
+    },
+    "cross_tenant_reviewer": {
+      "description": "跨租户复核员：个人数据掩码可见、跨租户字段标记保留，凭据仍以标记替代。",
+      "allow_classified": [],
+      "mask_classified": ["pii"],
+      "redact_classified": ["credential"],
+      "drop_cross_tenant": false
+    }
+  },
+  "default_role": "auditor"
+}
