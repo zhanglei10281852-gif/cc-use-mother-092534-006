@@ -1,0 +1,44 @@
+[
+  {
+    "event_id": "evt-06-001",
+    "event_type": "delegation.created",
+    "aggregate_id": "case-06-001",
+    "occurred_at": "2026-09-25T09:00:00+08:00",
+    "actor_id": "operator-01"
+  },
+  {
+    "event_id": "evt-06-002",
+    "event_type": "fragment.accepted",
+    "aggregate_id": "case-06-001",
+    "occurred_at": "2026-09-25T10:00:00+08:00",
+    "actor_id": "reviewer-02"
+  },
+  {
+    "event_id": "evt-06-003",
+    "event_type": "fragment.duplicated",
+    "aggregate_id": "case-06-001",
+    "occurred_at": "2026-09-25T11:00:00+08:00",
+    "actor_id": "operator-01"
+  },
+  {
+    "event_id": "evt-06-004",
+    "event_type": "gap.detected",
+    "aggregate_id": "case-06-001",
+    "occurred_at": "2026-09-25T12:00:00+08:00",
+    "actor_id": "reviewer-02"
+  },
+  {
+    "event_id": "evt-06-005",
+    "event_type": "fork.opened",
+    "aggregate_id": "case-06-001",
+    "occurred_at": "2026-09-25T13:00:00+08:00",
+    "actor_id": "operator-01"
+  },
+  {
+    "event_id": "evt-06-006",
+    "event_type": "fork.resolved",
+    "aggregate_id": "case-06-001",
+    "occurred_at": "2026-09-25T14:00:00+08:00",
+    "actor_id": "reviewer-02"
+  }
+]
