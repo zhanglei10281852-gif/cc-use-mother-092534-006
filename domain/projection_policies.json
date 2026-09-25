@@ -1,0 +1,29 @@
+{
+  "policy_version": "trace-projection-policy-v1",
+  "description": "按角色对凭据、个人数据和其他租户内容生成投影；任何投影都保留原始证据摘要",
+  "labels": ["credentials", "personal_data", "tenant_content"],
+  "treatments": ["reveal", "mask", "drop"],
+  "roles": {
+    "security_administrator": {
+      "credentials": "mask",
+      "personal_data": "mask",
+      "tenant_content": "mask"
+    },
+    "investigator": {
+      "credentials": "drop",
+      "personal_data": "mask",
+      "tenant_content": "mask"
+    },
+    "auditor": {
+      "credentials": "drop",
+      "personal_data": "drop",
+      "tenant_content": "mask"
+    },
+    "analyst": {
+      "credentials": "drop",
+      "personal_data": "drop",
+      "tenant_content": "drop"
+    }
+  },
+  "unknown_role_default": "drop"
+}

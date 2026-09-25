@@ -1,7 +1,7 @@
 [project]
 name = "ccusr-trace-chain"
-version = "0.1.0"
-description = "委派图、追踪片段、敏感投影、签名封存与访问审计的领域资料"
+version = "0.2.0"
+description = "委派追踪证据链服务：稳定关联标识、接收哈希链、缺口与分叉裁决、角色投影、冻结导出与读取审计"
 requires-python = ">=3.11"
 dependencies = []
 

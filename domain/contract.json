@@ -1,5 +1,6 @@
 {
   "project": "子智能体追踪证据链",
+  "contract_version": "1.1.0",
   "entities": [
     "task_family",
     "delegation",
@@ -20,22 +21,31 @@
     "released"
   ],
   "event_types": [
+    "family.created",
+    "family.frozen",
+    "family.released",
     "delegation.created",
     "fragment.accepted",
     "fragment.duplicated",
     "gap.detected",
+    "gap.filled",
     "fork.opened",
+    "fork.adjudicating",
     "fork.resolved",
     "chain.sealed",
-    "family.frozen"
+    "export.attested",
+    "read.recorded"
   ],
   "time_policy": "ISO 8601 with timezone",
-  "identifier_policy": "同一租户和对象类型内业务标识唯一",
-  "version_policy": "已发布规则与事实通过新版本追加，不覆盖历史",
+  "identifier_policy": "同一租户和对象类型内业务标识唯一；委派关联标识由业务键确定性派生，重复上报得到同一标识",
+  "version_policy": "已发布规则与事实通过新版本追加，不覆盖历史；1.1.0 仅在 1.0.0 基础上追加事件类型，未改动既有事件",
   "rules": [
     "来源序列号与内容摘要共同决定片段唯一性",
     "迟到片段不得改变已封存原始顺序",
     "分叉必须经过明确裁决才能继续封存",
-    "不同角色投影必须对应同一原始证据摘要"
+    "不同角色投影必须对应同一原始证据摘要",
+    "缺口未补齐或分叉未裁决的链不得标记为完整",
+    "所有读取行为必须留下审计记录，投影读取记录投影摘要",
+    "导出必须附带组成清单与可验证封存证明"
   ]
 }
